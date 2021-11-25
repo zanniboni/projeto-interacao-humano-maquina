@@ -4,39 +4,26 @@ const Schema = mongoose.Schema;
 
 
 //O schema serve para podermos inserir, deletar, atualizar e consultar informações mais rapidamente no mongoDB
-const Produtos = new Schema({
+const Funcionario = new Schema({
     nome: {
         type: String,
         require: true
     },
-    categoria: {
+    funcao: {
         type: String,
         require: true
     },
-    descricao: {
+    cpf: {
         type: String,
         requide: true
     },
-    quantidade: {
-        type: Number,
-        require: true
-    },
-    preco: {
-        type: Number,
-        default: 0
+    data_nasc: {
+        type: Date
     },
     urlFoto: {
         type: String,
         require: false
-    },    
-    slug: {
-        type: String,
-        require: true
-    },
-    date: {
-        type: Date,
-        default: Date.now()
     }
 })
 
-mongoose.model("produtos", Produtos)
+mongoose.model("funcionario", Funcionario)

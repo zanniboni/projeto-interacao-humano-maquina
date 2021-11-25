@@ -4,19 +4,24 @@ const Schema = mongoose.Schema;
 
 
 //O schema serve para podermos inserir, deletar, atualizar e consultar informações mais rapidamente no mongoDB
-const Categoria = new Schema({
-    nome: {
-        type: String,
+const Vendas = new Schema({
+    cod_cliente: {
+        type: Schema.Types.ObjectId,
+        ref: "cliente",
         require: true
     },
-    slug: {
-        type: String,
+    cod_peca: {
+        type: Schema.Types.ObjectId,
+        ref: "pecas"
+    },
+    quantidade: {
+        type: Number,
         require: true
     },
-    date: {
+    data: {
         type: Date,
-        default: Date.now()
+        require: true
     }
 })
 
-mongoose.model("categorias", Categoria)
+mongoose.model("vendas", Vendas)
