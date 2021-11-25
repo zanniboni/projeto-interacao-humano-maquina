@@ -77,7 +77,7 @@ router.post("/registro", upload.single("file"), (req, res) => {
                         novoUsuario.senha = hash
                         novoUsuario.save().then(() =>{
                             req.flash("success_msg", "Usuário criado com sucesso.")
-                            res.redirect("/")
+                            res.redirect("/usuarios/login")
                         }).catch((err) => {
                             req.flash("error_msg", "Houve um erro ao criar o usuário.")
                             res.redirect("/usuarios/registro")
@@ -107,7 +107,7 @@ router.get("/login", (req, res) => {
 router.post("/login", (req, res, next) => {
     //Função de autenticação do passport, recebe a instrução local pois é o tipo de autenticação utilizada
     passport.authenticate("local", {
-        successRedirect: "/",
+        successRedirect: "/admin/index",
         failureRedirect: "/usuarios/login",
         failureFlash: true
     })(req, res, next)
